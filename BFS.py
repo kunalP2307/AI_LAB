@@ -4,15 +4,15 @@ from collections import defaultdict
 class Graph:
 
     def __init__(self):
-        self.graph = defaultdict(list)
+        self.adj_list = defaultdict(list)
 
     def add_edge(self,source,destination):
-        self.graph[source].append(destination)
+        self.adj_list[source].append(destination)
 
     def bfs(self,source):
         visited = []
         queue = []
-        for i in range(len(self.graph)):
+        for i in range(len(self.adj_list)):
             visited.append(False)
 
         queue.append(source)
@@ -21,7 +21,7 @@ class Graph:
         while queue:
             s = queue.pop(0)
             print(s ,end = " ")
-            for i in self.graph[s]:
+            for i in self.adj_list[s]:
                 if visited[i] == False:
                     queue.append(i)
                     visited[i] = True
